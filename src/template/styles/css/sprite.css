@@ -1,0 +1,29 @@
+.icon-check {
+  background-image: url(../../img/sprite.png);
+  background-position: 0px -78px;
+  width: 23px;
+  height: 22px; }
+
+.icon-email {
+  background-image: url(../../img/sprite.png);
+  background-position: -25px -53px;
+  width: 28px;
+  height: 21px; }
+
+.icon-phone {
+  background-image: url(../../img/sprite.png);
+  background-position: 0px -53px;
+  width: 25px;
+  height: 25px; }
+
+.icon-skype {
+  background-image: url(../../img/sprite.png);
+  background-position: 0px 0px;
+  width: 53px;
+  height: 53px; }
+
+.icon-vk {
+  background-image: url(../../img/sprite.png);
+  background-position: -53px 0px;
+  width: 64px;
+  height: 39px; }

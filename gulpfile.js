@@ -44,7 +44,9 @@ gulp.task('scripts', function() {
 	return gulp.src([ 
 		'src/template/libs/jquery/dist/jquery.js',
 		'src/template/libs/jquery-mask-plugin/dist/jquery.mask.js',
-		'src/template/libs/fancybox/dist/jquery.fancybox.js'
+		'src/template/libs/fancybox/dist/jquery.fancybox.js',
+		'src/template/libs/slick-carousel/slick/slick.js',
+		'src/template/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.js'
 		])
 		.pipe(concat('libs.js')) 
 		.pipe(gulp.dest('src/template/scripts')); 

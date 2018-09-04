@@ -1,0 +1,121 @@
+// SASS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home
+//   width: $icon-home-width
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites
+$check-name: 'check'
+$check-x: 0px
+$check-y: 78px
+$check-offset-x: 0px
+$check-offset-y: -78px
+$check-width: 23px
+$check-height: 22px
+$check-total-width: 117px
+$check-total-height: 100px
+$check-image: 'sprite.png'
+$check: (0px, 78px, 0px, -78px, 23px, 22px, 117px, 100px, 'sprite.png', 'check', )
+$email-name: 'email'
+$email-x: 25px
+$email-y: 53px
+$email-offset-x: -25px
+$email-offset-y: -53px
+$email-width: 28px
+$email-height: 21px
+$email-total-width: 117px
+$email-total-height: 100px
+$email-image: 'sprite.png'
+$email: (25px, 53px, -25px, -53px, 28px, 21px, 117px, 100px, 'sprite.png', 'email', )
+$phone-name: 'phone'
+$phone-x: 0px
+$phone-y: 53px
+$phone-offset-x: 0px
+$phone-offset-y: -53px
+$phone-width: 25px
+$phone-height: 25px
+$phone-total-width: 117px
+$phone-total-height: 100px
+$phone-image: 'sprite.png'
+$phone: (0px, 53px, 0px, -53px, 25px, 25px, 117px, 100px, 'sprite.png', 'phone', )
+$skype-name: 'skype'
+$skype-x: 0px
+$skype-y: 0px
+$skype-offset-x: 0px
+$skype-offset-y: 0px
+$skype-width: 53px
+$skype-height: 53px
+$skype-total-width: 117px
+$skype-total-height: 100px
+$skype-image: 'sprite.png'
+$skype: (0px, 0px, 0px, 0px, 53px, 53px, 117px, 100px, 'sprite.png', 'skype', )
+$vk-name: 'vk'
+$vk-x: 53px
+$vk-y: 0px
+$vk-offset-x: -53px
+$vk-offset-y: 0px
+$vk-width: 64px
+$vk-height: 39px
+$vk-total-width: 117px
+$vk-total-height: 100px
+$vk-image: 'sprite.png'
+$vk: (53px, 0px, -53px, 0px, 64px, 39px, 117px, 100px, 'sprite.png', 'vk', )
+$spritesheet-width: 117px
+$spritesheet-height: 100px
+$spritesheet-image: 'sprite.png'
+$spritesheet-sprites: ($check, $email, $phone, $skype, $vk, )
+$spritesheet: (117px, 100px, 'sprite.png', $spritesheet-sprites, )
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home
+//   @include sprite-width($icon-home)
+//
+// .icon-email
+//   @include sprite($icon-email)
+//
+// Example usage in HTML:
+//   `display: block` sprite:
+//   <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//   // CSS
+//   .icon {
+//     display: inline-block;
+//   }
+//
+//   // HTML
+//   <i class="icon icon-home"></i>
+@mixin sprite-width($sprite)
+  width: nth($sprite, 5)
+
+@mixin sprite-height($sprite)
+  height: nth($sprite, 6)
+
+@mixin sprite-position($sprite)
+  $sprite-offset-x: nth($sprite, 3)
+  $sprite-offset-y: nth($sprite, 4)
+  background-position: $sprite-offset-x  $sprite-offset-y
+
+@mixin sprite-image($sprite)
+  $sprite-image: nth($sprite, 9)
+  background-image: url(#{$sprite-image})
+
+@mixin sprite($sprite)
+  @include sprite-image($sprite)
+  @include sprite-position($sprite)
+  @include sprite-width($sprite)
+  @include sprite-height($sprite)
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SASS
+//
+// @include sprites($spritesheet-sprites)
+@mixin sprites($sprites)
+  @each $sprite in $sprites
+    $sprite-name: nth($sprite, 10)
+    .#{$sprite-name}
+      @include sprite($sprite)
